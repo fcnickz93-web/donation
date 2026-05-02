@@ -1,0 +1,76 @@
+
+Ir para o conteúdo principal
+
+Pesquisar no Netlify…
+
+
+edição nickzfcnickz93@gmail.com
+
+Projetos
+lixodoar
+Projetos de troca
+
+Navegação do projeto
+Deploy detailsYour deploy failed due to an error
+Deploy failed for trashdonate
+A failure prevented us from deploying your project.
+Why did it fail?
+Today at 1:16 PM
+
+Production: main@983b0df
+
+Retry
+Deploy settings
+Delete deploy
+Deploy log
+Why did it fail?
+
+
+
+
+Maximize log
+Initializing
+Failed
+1:16:29 PM: build-image version: ac6eb13fbf000e5c09ad677efd8b7c3c2d0142b6 (noble-new-builds)
+1:16:29 PM: buildbot version: 1e1f172b82fc46a7a7b4b14d04d14163b44b9b01
+1:16:29 PM: Fetching cached dependencies
+1:16:29 PM: Failed to fetch cache, continuing with build
+1:16:29 PM: Starting to prepare the repo for build
+1:16:29 PM: No cached dependencies found. Cloning fresh repo
+1:16:29 PM: git clone --filter=blob:none https://github.com/fcnickz93-web/donation
+1:16:30 PM: Preparing Git Reference refs/heads/main
+1:16:31 PM: Custom publish path detected. Proceeding with the specified path: 'artifacts/trashboy/dist/public'
+1:16:31 PM: Custom build command detected. Proceeding with the specified command: 'pnpm --filter @workspace/trashboy run build'
+1:16:31 PM: Installing dependencies
+1:16:31 PM: mise ~/.config/mise/config.toml tools: python@3.14.3
+1:16:31 PM: mise ~/.config/mise/config.toml tools: ruby@3.4.8
+1:16:31 PM: mise ~/.config/mise/config.toml tools: go@1.26.2
+1:16:32 PM: v20.20.2 is already installed.
+1:16:32 PM: Now using node v20.20.2 (npm v10.8.2)
+1:16:32 PM: Enabling Node.js Corepack
+1:16:33 PM: Found pnpm version (10.30.3) that doesn't match expected (9)
+Preparing pnpm@9 for immediate activation...
+1:16:34 PM: pnpm workspaces detected
+1:16:35 PM: Failed during stage 'Install dependencies': dependency_installation script returned non-zero exit code: 1
+1:16:35 PM: Installing npm packages using pnpm version 9.15.9
+1:16:35 PM: Scope: all 9 workspace projects
+1:16:35 PM:  ERR_PNPM_LOCKFILE_CONFIG_MISMATCH  Cannot proceed with the frozen installation. The current "overrides" configuration doesn't match the value found in the lockfile
+1:16:35 PM: Update your lockfile using "pnpm install --no-frozen-lockfile"
+1:16:35 PM: Error during pnpm install
+1:16:35 PM: Failing build: Failed to install dependencies
+Building
+Complete
+Deploying
+Skipped
+Cleanup
+Skipped
+Post-processing
+Skipped
+Documentos
+Preços
+Apoiar
+Blog
+Registro de alterações
+Termos
+© 2026 Netlify
+
