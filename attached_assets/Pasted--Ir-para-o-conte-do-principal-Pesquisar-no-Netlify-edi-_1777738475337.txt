@@ -1,0 +1,107 @@
+
+Ir para o conteúdo principal
+
+Pesquisar no Netlify…
+
+
+edição nickzfcnickz93@gmail.com
+
+Projetos
+lixodoar
+Projetos de troca
+
+Navegação do projeto
+Deploy detailsYour deploy is in progress
+Deploy in progress for trashdonate
+Netlify’s robots are busy building and deploying your project to our CDN.
+Today at 1:13 PM
+
+Production: main@13d69ea
+
+Cancel deploy
+Deploy settings
+Deploy log
+
+
+
+
+Maximize log
+Initializing
+Complete
+Building
+Failed
+1:14:10 PM: Netlify Build                                                 
+1:14:10 PM: ────────────────────────────────────────────────────────────────
+1:14:10 PM: ​
+1:14:10 PM: ❯ Version
+1:14:10 PM:   @netlify/build 35.13.4
+1:14:10 PM: ​
+1:14:10 PM: ❯ Flags
+1:14:10 PM:   accountId: 69f61de1c3b3c2f190f117c1
+1:14:10 PM:   baseRelDir: true
+1:14:10 PM:   buildId: 69f622c54441351966794110
+1:14:10 PM:   deployId: 69f622c54441351966794112
+1:14:10 PM:   packagePath: artifacts/mockup-sandbox
+1:14:11 PM: ​
+1:14:11 PM: ❯ Current directory
+1:14:11 PM:   /opt/build/repo
+1:14:11 PM: ​
+1:14:11 PM: ❯ Config file
+1:14:11 PM:   No config file was defined: using default values.
+1:14:11 PM: ​
+1:14:11 PM: ❯ Context
+1:14:11 PM:   production
+1:14:11 PM: ​
+1:14:11 PM: Build command from Netlify app                                
+1:14:11 PM: ────────────────────────────────────────────────────────────────
+1:14:11 PM: ​
+1:14:11 PM: $ pnpm --filter @workspace/mockup-sandbox... run build
+1:14:11 PM: > @workspace/mockup-sandbox@2.0.0 build /opt/build/repo/artifacts/mockup-sandbox
+1:14:11 PM: > vite build
+1:14:11 PM: failed to load config from /opt/build/repo/artifacts/mockup-sandbox/vite.config.ts
+1:14:11 PM: error during build:
+1:14:11 PM: Error: PORT environment variable is required but was not provided.
+1:14:11 PM:     at file:///opt/build/repo/artifacts/mockup-sandbox/node_modules/.vite-temp/vite.config.ts.timestamp-1777738451546-8dac793affbd6.mjs:145:9
+1:14:11 PM:     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+1:14:11 PM:     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+1:14:11 PM:     at async loadConfigFromBundledFile (file:///opt/build/repo/node_modules/.pnpm/vite@7.3.2_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/chunks/config.js:35920:12)
+1:14:11 PM:     at async bundleAndLoadConfigFile (file:///opt/build/repo/node_modules/.pnpm/vite@7.3.2_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/chunks/config.js:35808:17)
+1:14:11 PM:     at async loadConfigFromFile (file:///opt/build/repo/node_modules/.pnpm/vite@7.3.2_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/chunks/config.js:35775:42)
+1:14:11 PM:     at async resolveConfig (file:///opt/build/repo/node_modules/.pnpm/vite@7.3.2_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/chunks/config.js:35424:22)
+1:14:11 PM:     at async createBuilder (file:///opt/build/repo/node_modules/.pnpm/vite@7.3.2_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/chunks/config.js:33879:19)
+1:14:11 PM:     at async CAC.<anonymous> (file:///opt/build/repo/node_modules/.pnpm/vite@7.3.2_@types+node@25.3.5_jiti@2.6.1_lightningcss@1.31.1_tsx@4.21.0_yaml@2.8.2/node_modules/vite/dist/node/cli.js:629:10)
+1:14:11 PM: /opt/build/repo/artifacts/mockup-sandbox:
+1:14:11 PM:  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/mockup-sandbox@2.0.0 build: `vite build`
+1:14:11 PM: Exit status 1
+1:14:11 PM: ​
+1:14:11 PM: "build.command" failed                                        
+1:14:11 PM: ────────────────────────────────────────────────────────────────
+1:14:11 PM: ​
+1:14:11 PM:   Error message
+1:14:11 PM:   Command failed with exit code 1: pnpm --filter @workspace/mockup-sandbox... run build
+1:14:11 PM: ​
+1:14:11 PM:   Error location
+1:14:11 PM:   In Build command from Netlify app:
+1:14:11 PM:   pnpm --filter @workspace/mockup-sandbox... run build
+1:14:11 PM: ​
+1:14:11 PM:   Resolved config
+1:14:11 PM:   build:
+1:14:11 PM:     command: pnpm --filter @workspace/mockup-sandbox... run build
+1:14:11 PM:     commandOrigin: ui
+1:14:11 PM:     publish: /opt/build/repo/artifacts/mockup-sandbox/dist
+1:14:11 PM:     publishOrigin: ui
+1:14:12 PM: Build failed due to a user error: Build script returned non-zero exit code: 2
+1:14:12 PM: Failing build: Failed to build site
+1:14:12 PM: Finished processing build request in 14.585s
+1:14:12 PM: Failed during stage 'building site': Build script returned non-zero exit code: 2
+Deploying
+Cleanup
+Post-processing
+Documentos
+Preços
+Apoiar
+Blog
+Registro de alterações
+Termos
+© 2026 Netlify
+
