@@ -1,27 +1,20 @@
 /**
- * Pix EMV/BRCode generator — padrão oficial Banco Central do Brasil
- * Gera o código "Copia e Cola" (BRCode) com CRC-16/CCITT-FALSE
+ * Pix BRCode generator — usa o template oficial fornecido pelo usuário.
  *
- * Referência: https://www.bcb.gov.br/content/estabilidadefinanceira/forumpagamentosvarejo/Acoes_e_projetos_Manual-BR_Code.pdf
+ * Template base (sem valor):
+ * 00020126440014BR.GOV.BCB.PIX0122contatocaufe@gmail.com5204000053039865802BR5901N6001C62070503***6304D321
+ *
+ * Quando um valor é informado, o campo 54 (Transaction Amount) é inserido
+ * entre o campo de moeda (5303986) e o país (5802BR), e o CRC-16 é recalculado.
+ *
+ * CRC-16/CCITT-FALSE: Polynomial 0x1021, Init 0xFFFF
  */
 
-const PIX_GUI = "BR.GOV.BCB.PIX";
+const PIX_BEFORE_COUNTRY =
+  "00020126440014BR.GOV.BCB.PIX0122contatocaufe@gmail.com520400005303986";
 
-function emvField(id: string, value: string): string {
-  const len = value.length.toString().padStart(2, "0");
-  return `${id}${len}${value}`;
-}
-
-function buildMerchantAccountInfo(pixKey: string): string {
-  const gui = emvField("00", PIX_GUI);
-  const key = emvField("01", pixKey);
-  return emvField("26", gui + key);
-}
-
-function buildAdditionalData(txid: string): string {
-  const sanitized = txid.replace(/[^A-Za-z0-9]/g, "").slice(0, 25) || "***";
-  return emvField("62", emvField("05", sanitized));
-}
+const PIX_FROM_COUNTRY =
+  "5802BR5901N6001C62070503***6304";
 
 /**
  * CRC-16/CCITT-FALSE
@@ -43,80 +36,33 @@ function crc16(str: string): string {
   return crc.toString(16).toUpperCase().padStart(4, "0");
 }
 
-export interface PixOptions {
-  pixKey: string;
-  merchantName: string;
-  merchantCity: string;
-  amount?: number;
-  txid?: string;
-  description?: string;
-}
-
-export function generatePixCode(options: PixOptions): string {
-  const {
-    pixKey,
-    merchantName,
-    merchantCity,
-    amount,
-    txid = "TRASHBOY",
-    description,
-  } = options;
-
-  const safeName = merchantName
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^A-Za-z0-9 ]/g, "")
-    .slice(0, 25)
-    .toUpperCase();
-
-  const safeCity = merchantCity
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^A-Za-z0-9 ]/g, "")
-    .slice(0, 15)
-    .toUpperCase();
-
-  let merchantAccountInfo = buildMerchantAccountInfo(pixKey);
-
-  if (description) {
-    const gui = emvField("00", PIX_GUI);
-    const key = emvField("01", pixKey);
-    const desc = emvField("02", description.slice(0, 72));
-    merchantAccountInfo = emvField("26", gui + key + desc);
-  }
-
-  const fields: string[] = [
-    emvField("00", "01"),
-    emvField("01", "12"),
-    merchantAccountInfo,
-    emvField("52", "0000"),
-    emvField("53", "986"),
-  ];
+/**
+ * Gera o código Pix "Copia e Cola".
+ * Se amount for fornecido e válido, insere o campo 54 antes do país e recalcula CRC.
+ * Se amount for undefined, gera o código sem valor fixo (template original).
+ */
+export function generatePixCode(amount?: number): string {
+  let payload: string;
 
   if (amount !== undefined && amount > 0) {
-    fields.push(emvField("54", amount.toFixed(2)));
+    const amountStr = amount.toFixed(2);
+    const amountField =
+      "54" + amountStr.length.toString().padStart(2, "0") + amountStr;
+    payload = PIX_BEFORE_COUNTRY + amountField + PIX_FROM_COUNTRY;
+  } else {
+    payload = PIX_BEFORE_COUNTRY + PIX_FROM_COUNTRY;
   }
 
-  fields.push(emvField("58", "BR"));
-  fields.push(emvField("59", safeName));
-  fields.push(emvField("60", safeCity));
-  fields.push(buildAdditionalData(txid));
-  fields.push("6304");
-
-  const payload = fields.join("");
-  const checksum = crc16(payload);
-
-  return payload + checksum;
+  return payload + crc16(payload);
 }
 
-export function formatCurrency(value: string): string {
-  const numeric = value.replace(/\D/g, "");
-  if (!numeric) return "";
-  const number = parseFloat(numeric) / 100;
-  return number.toFixed(2);
-}
-
+/**
+ * Converte string de input do usuário para número de reais.
+ * Aceita formatos: "10", "10,50", "10.50"
+ * Retorna undefined se inválido.
+ */
 export function parseCurrencyInput(raw: string): number | undefined {
+  if (!raw.trim()) return undefined;
   const cleaned = raw.replace(",", ".").replace(/[^0-9.]/g, "");
   const parsed = parseFloat(cleaned);
   if (isNaN(parsed) || parsed <= 0) return undefined;

@@ -2,9 +2,6 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import QRCode from "qrcode";
 import { generatePixCode, parseCurrencyInput } from "@/lib/pix";
 
-const PIX_KEY = "trashboy@gmail.com";
-const PIX_MERCHANT_NAME = "Trashboy";
-const PIX_MERCHANT_CITY = "SAO PAULO";
 const BITCOIN_WALLET = "bc1qcgfrv79marhzve5cnmdl08khxx67d0477chjc8";
 
 type CopyState = "idle" | "copied";
@@ -75,13 +72,7 @@ function PixSection() {
       return;
     }
 
-    const code = generatePixCode({
-      pixKey: PIX_KEY,
-      merchantName: PIX_MERCHANT_NAME,
-      merchantCity: PIX_MERCHANT_CITY,
-      amount,
-      txid: "TRASHBOY",
-    });
+    const code = generatePixCode(amount);
 
     setPixCode(code);
     setQrGenerated(false);
